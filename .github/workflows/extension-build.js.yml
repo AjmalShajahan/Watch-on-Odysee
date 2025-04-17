@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    # branches: [ master ]
     tags: [ v*.*.* ]
   pull_request:
     branches: [ master ]
@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -43,7 +43,7 @@ jobs:
       uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
       if: github.ref_type == 'tag'
       with:
-        tag_name: v${{ github.run_number }}  # This will use the branch name or tag 
+        tag_name: v${{ github.run_number }}  # This will use the branch name or tag
         files: web-ext-artifacts/*.zip  # Adjust this to point to your zip file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

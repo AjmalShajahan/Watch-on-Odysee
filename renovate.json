@@ -12,7 +12,8 @@
     ":rebaseStalePrs",
     ":renovatePrefix",
     ":semanticPrefixFixDepsChoreOthers",
-    ":separateMultipleMajorReleases"
+    ":separateMultipleMajorReleases",
+    ":preserveSemverRanges"
   ],
   "branchPrefix": "renovate-",
   "baseBranches": ["master"],

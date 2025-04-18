@@ -2,10 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
-    ":approveMajorUpdates",
-    ":assignAndReview(AjmalShajahan)",
-    ":automergeMinor",
-    ":automergePr",
+    "group:allNonMajor",
+    ":automergeStableNonMajor",
+    ":automergeBranch",
     ":automergeRequireAllStatusChecks",
     ":combinePatchMinorReleases",
     ":prImmediately",
@@ -13,18 +12,12 @@
     ":renovatePrefix",
     ":semanticPrefixFixDepsChoreOthers",
     ":separateMultipleMajorReleases",
+    ":approveMajorUpdates",
     ":preserveSemverRanges"
   ],
-  "branchPrefix": "renovate-",
-  "baseBranches": ["master"],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
-      "automerge": true,
-      "automergeType": "branch",
-      "platformAutomerge": true,
       "labels": ["dependencies"]
     },
     {
@@ -33,10 +26,11 @@
     }
   ],
   "rollbackPrs": true,
-  "rebaseWhen": "conflicted",
   "assigneesFromCodeOwners": true,
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": ["dependencies"],
+  "dependencyDashboardOSVVulnerabilitySummary": "all",
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security"]
